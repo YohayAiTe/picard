@@ -745,7 +745,7 @@ class ID3File(File):
         lrc_lyrics = [f"[{first_timestamp}]"]
         for i, lyrics in enumerate(lyrics):
             timestamp = milliseconds_to_timestamp(milliseconds[i])
-            if '\n' in lyrics:
+            if '\n' in lyrics and len(lyrics.replace('\n', '')):
                 split = lyrics.split('\n')
                 lrc_lyrics.append(f"<{timestamp}>{split[0]}")
                 distribution = (milliseconds[i + 1] - milliseconds[i]) / len(lyrics.replace('\n', ''))
